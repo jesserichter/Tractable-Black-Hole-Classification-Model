@@ -1,11 +1,5 @@
 ## A machine learning model to predict the mass of quasar SMBHs
-The [Sloan Digital Sky Survey (SDSS)](https://www.sdss.org/) has observed an extensive set of quasar spectra - see [Lyke+ 2020](https://arxiv.org/abs/2007.09001) for details.  From the SDSS [Chen+ 2019](https://iopscience.iop.org/article/10.3847/1538-4365/ab41fe) made single-epoch black hole mass estimates for 173,559 quasars by spectral fitting.
-
-The code in this repository uses a subset of the Chen+ 2019 dataset to predict quasar black hole masses through an artificial neural network (ANN) implemented using the EasyAI wrapper for TensorFlow. It predicts the log of the black hole mass, log<sub>10</sub>(*M*<sub>BH</sub>/M<sub>Sun</sub>), for each single spectrum in a selected subset of the Chen+ quasars.
-
-The ANN takes the Chen+ "single-epoch" mass estimates as the model's ground truth for training.  
-
-The ANN comprises three Conv1D layers (the middle one with a batch normalization) followed by two LSTM layers and then two Dense layers.  Two rounds of Nadam optimization are used, with learning rates of 1e-3 and 1e-5.
+The net comprises three Conv1D layers (the middle one with a batch normalization) followed by two LSTM layers and then two Dense layers.  
 
 
 The files and folders are as follows:
@@ -23,6 +17,5 @@ The files and folders are as follows:
   - a 'bigger_data` folder containing:
      - `quasars.parquet` which is created from the Chen+ data file and SDSS data.
 
-Additional data is needed to run the model as a `spectra.parquet` file is too big to be on GitHub (2.4GB) and is stored on *Open Science Foundation* at https://osf.io/6hbqx/.  Download this and add it to the `bigger_data` sub-folder.
 
 To create the `quasars.parquet` and `spectra.parquet` files from scratch, download to `bigger_data` an SDSS data file https://data.sdss.org/sas/dr16/eboss/qso/DR16Q/DR16Q_v4.fits, which is described on the relevant [SDSS datamodel webpage](https://dr16.sdss.org/datamodel/files/BOSS_QSO/DR16Q/DR16Q_v4.html).  Follow instructions in the second cell of `Quasar_mass_ML.ipynb`. 
