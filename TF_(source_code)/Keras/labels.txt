@@ -1,0 +1,3 @@
+0 Stellar black holes
+1 Supermassive black holes
+2 Intermediate black holes
